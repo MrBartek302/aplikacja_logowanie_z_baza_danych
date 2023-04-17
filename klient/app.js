@@ -14,8 +14,7 @@ async function login(){
 
 function adminPage(){
     const login = JSON.parse(localStorage.getItem("login"))
-    console.log(login)
-
+   
     if(login.upr!="admin")
     window.location.href="login.html"
 }
