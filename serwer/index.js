@@ -19,7 +19,9 @@ con.connect((err)=>{
     else console.log("Połączono z bazą danych")
 })
 
-app.get("/login", (req, res)=>{
+app.get("/login/:user/:pass", (req, res)=>{
+    const user = req.params.user
+    const pass = req.params.pass
     
     const sql = `SELECT * FROM users`
     con.query(sql, (err, results, fields)=>{
