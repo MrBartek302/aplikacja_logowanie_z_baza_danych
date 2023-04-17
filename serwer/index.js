@@ -36,11 +36,14 @@ app.get("/login/:user/:pass", (req, res)=>{
                 if(results[0].haslo == pass){
                     status.status = true
                     status.upr = results[0].uprawnienia
+                }else{
+                    status.status = false
+                    status.upr = "Niepoprawne hasło"
                 }
 
             } else {
                 status.status = false
-                status.upr = "niepoprawny login lub hasło"
+                status.upr = "Niepoprawny login"
             }
            
             
