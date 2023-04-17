@@ -22,8 +22,6 @@ con.connect((err)=>{
 app.get("/login/:user/:pass", (req, res)=>{
     const user = req.params.user
     const pass = req.params.pass
-
-   // console.log(`user: ${user}, pass: ${pass}`)
     
     const sql = `SELECT * FROM users WHERE login = "${user}"`
     con.query(sql, (err, results, fields)=>{
