@@ -3,7 +3,7 @@ async function login(){
     const formPass = document.getElementById("pass").value
 
 
-    const data = await fetch(`http://localhost:3000/login/${formLogin}/${formPass}`)
+    const data = await fetch(`${baseurl}/login/${formLogin}/${formPass}`)
     const json = await data.json()
 
     console.log(json)
