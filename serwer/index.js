@@ -22,11 +22,32 @@ con.connect((err)=>{
 app.get("/login/:user/:pass", (req, res)=>{
     const user = req.params.user
     const pass = req.params.pass
+
+   // console.log(`user: ${user}, pass: ${pass}`)
     
-    const sql = `SELECT * FROM users`
+    const sql = `SELECT * FROM users WHERE login = "${user}"`
     con.query(sql, (err, results, fields)=>{
+        console.log(results)
         if(err) console.log(err)
-        else res.send(results)
+        else{
+            
+            var status = {"status": false, "upr":""}
+            
+            if(results.length!=0){
+               
+                if(results[0].haslo == pass){
+                    status.status = true
+                    status.upr = results[0].uprawnienia
+                }
+
+            } else {
+                status.status = false
+                status.upr = "niepoprawny login lub hasło"
+            }
+           
+            
+            res.send(status)
+        }
     })
 })
 
