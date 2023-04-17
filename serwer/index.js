@@ -19,9 +19,17 @@ con.connect((err)=>{
     else console.log("Połączono z bazą danych")
 })
 
-app.get("/test", (req, res)=>{
-    res.send({"status": "ok"})
+app.get("/login", (req, res)=>{
+    
+    const sql = `SELECT * FROM users`
+    con.query(sql, (err, results, fields)=>{
+        if(err) console.log(err)
+        else res.send(results)
+    })
 })
+
+
+
 
 app.listen(port, ()=>{
     console.log("Aplikacja działa na porcie: "+port)
