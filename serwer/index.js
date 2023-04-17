@@ -40,20 +40,14 @@ app.get("/login/:user/:pass", (req, res)=>{
                     status.status = false
                     status.upr = "Niepoprawne hasło"
                 }
-
             } else {
                 status.status = false
                 status.upr = "Niepoprawny login"
             }
-           
-            
             res.send(status)
         }
     })
 })
-
-
-
 
 app.listen(port, ()=>{
     console.log("Aplikacja działa na porcie: "+port)
